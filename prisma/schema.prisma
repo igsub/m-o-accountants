@@ -14,7 +14,7 @@ model Form {
   id           String    @id @default(cuid())
   companyName  String
   fiscalIdCode String
-  clientNumber String
+  clientNumber Int
   receipts     Receipt[]
 
   createdAt DateTime @default(now())
