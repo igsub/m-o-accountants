@@ -16,6 +16,7 @@ model Form {
   fiscalIdCode String
   clientNumber Int
   receipts     Receipt[]
+  approved     Boolean @default(false)
 
   createdAt DateTime @default(now())
 }

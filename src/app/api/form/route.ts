@@ -33,7 +33,9 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const forms = await db.form.findMany();
+    const forms = await db.form.findMany({
+      include: { receipts: true }
+    });
     return NextResponse.json(forms);
   } catch (error) {
     if (error instanceof Error) {

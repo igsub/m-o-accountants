@@ -13,6 +13,7 @@ import { Prisma } from "@prisma/client"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Formats } from "@/lib/formats"
 import { Loader2 } from "lucide-react"
+import ReceiptsTable from "@/components/receiptsTable"
 
 const formSchema = z.object({
 	companyName: z.string().min(2).max(100),
@@ -152,26 +153,8 @@ const Page = () => {
 				</Form>
 			</div>
 			<div className='flex flex-col gap-4 w-2/3'>
-				<ReceiptModalForm open={openAddReceiptModal} onCancel={handleReceiptCancel} onSubmit={handleReceiptSubmit} />
-				<Table>
-					<TableCaption>Created receipts.</TableCaption>
-					<TableHeader>
-						<TableRow>
-							<TableHead>Date</TableHead>
-							<TableHead className='text-right'>Tax amount</TableHead>
-							<TableHead className='text-right'>Tax percentage</TableHead>
-						</TableRow>
-					</TableHeader>
-					<TableBody>
-						{receipts.map((receipt, idx) => (
-							<TableRow key={`${idx}-${receipt.date.toString()}`}>
-								<TableCell className='font-medium'>{receipt.date.toString()}</TableCell>
-								<TableCell className='text-right'>{Formats.currency(receipt.taxAmount)}</TableCell>
-								<TableCell className='text-right'>{Formats.percentage(receipt.taxPercentage)}</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
+				<ReceiptModalForm open={openAddReceiptModal} onOpenChange={setOpenAddReceiptModal} onCancel={handleReceiptCancel} onSubmit={handleReceiptSubmit} />
+				<ReceiptsTable receipts={receipts} caption='Created receipts.' />
 				<Button variant='secondary' onClick={() => setOpenAddReceiptModal(true)} disabled={loading}>
 					+ Add Receipt
 				</Button>
