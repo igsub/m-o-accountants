@@ -6,7 +6,14 @@ export async function POST(request: Request) {
     const data = await request.json();
 
     const newForm = await db.form.create({
-      data,
+      data: {
+        companyName: data.companyName,
+        fiscalIdCode: data.fiscalIdCode,
+        clientNumber: data.clientNumber,
+        receipts: {
+          create: data.receipts
+        }
+      }
     });
 
     return NextResponse.json(newForm);
