@@ -111,7 +111,7 @@ const ReceiptModalForm = (props: ReceiptModalForm) => {
 								<FormItem>
 									<FormLabel>Tax percentage</FormLabel>
 									<FormControl>
-										<Input type='number' placeholder='0.X' {...field} onChange={(event) => field.onChange(+event.target.value)} />
+										<Input placeholder='0.X' {...field} onChange={(event) => field.onChange(+event.target.value)} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
