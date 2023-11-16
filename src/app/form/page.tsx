@@ -86,6 +86,10 @@ const Page = () => {
 		setOpenAddReceiptModal(false)
 	}
 
+	const isNumber = (value: string) => {
+		return !isNaN(+value)
+	}
+
 	return (
 		<div className='flex flex-col gap-4 md:flex-row justify-center w-full md:w-2/3'>
 			<div className='w-1/3'>
@@ -128,7 +132,9 @@ const Page = () => {
 									<FormItem>
 										<FormLabel>Client Number</FormLabel>
 										<FormControl>
-											<Input placeholder='Client Number' {...field} onChange={(event) => field.onChange(+event.target.value)} />
+											<Input placeholder='Client Number' {...field} onChange={(event) => {
+												isNumber(event.target.value) ? field.onChange(+event.target.value) : event.preventDefault()
+											}} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>

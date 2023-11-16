@@ -58,6 +58,10 @@ const ReceiptModalForm = (props: ReceiptModalForm) => {
 		form.reset()
 	}
 
+	const isNumber = (value: string) => {
+		return !isNaN(+value)
+	}
+
 	return (
 		<Dialog {...props}>
 			<DialogContent className='sm:max-w-[425px]'>
@@ -97,7 +101,9 @@ const ReceiptModalForm = (props: ReceiptModalForm) => {
 								<FormItem>
 									<FormLabel>Tax amount</FormLabel>
 									<FormControl>
-										<Input {...field} onChange={(event) => field.onChange(+event.target.value)} />
+										<Input {...field} onChange={(event) => {
+												isNumber(event.target.value) ? field.onChange(+event.target.value) : event.preventDefault()
+											}} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -111,7 +117,9 @@ const ReceiptModalForm = (props: ReceiptModalForm) => {
 								<FormItem>
 									<FormLabel>Tax percentage</FormLabel>
 									<FormControl>
-										<Input placeholder='0.X' {...field} onChange={(event) => field.onChange(+event.target.value)} />
+										<Input placeholder='0.X' {...field} onChange={(event) => {
+												isNumber(event.target.value) ? field.onChange(+event.target.value) : event.preventDefault()
+											}} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
