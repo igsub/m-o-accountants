@@ -3,8 +3,7 @@
 import Link from "next/link"
 import React from "react"
 import { Button } from "../ui/button"
-import { signOut } from "next-auth/react"
-import { useSession } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 
 const Navbar = () => {
 	const { data: session, status } = useSession()
