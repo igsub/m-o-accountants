@@ -1,7 +1,7 @@
 "use client"
 import ReceiptModalForm from "@/components/receiptModalForm"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/components/ui/use-toast"
 import { cn } from "@/lib/utils"
@@ -10,8 +10,6 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { Prisma } from "@prisma/client"
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Formats } from "@/lib/formats"
 import { Loader2 } from "lucide-react"
 import ReceiptsTable from "@/components/receiptsTable"
 
@@ -23,7 +21,6 @@ const formSchema = z.object({
 
 const Page = () => {
 	const { toast } = useToast()
-	const [validFiscalIdCode, setValidFiscalIdCode] = useState(false)
 	const [openAddReceiptModal, setOpenAddReceiptModal] = useState(false)
 	const [receipts, setReceipts] = useState<Prisma.ReceiptCreateInput[]>([])
 	const [loading, setLoading] = useState(false)
@@ -70,7 +67,6 @@ const Page = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				setValidFiscalIdCode(data)
 				if (data) {
 					validFiscalIdCodeToast()
 					saveForm(values)

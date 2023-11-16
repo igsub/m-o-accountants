@@ -1,4 +1,5 @@
 "use client"
+
 import ReceiptsTable from "@/components/receiptsTable"
 import { Button } from "@/components/ui/button"
 import { DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
