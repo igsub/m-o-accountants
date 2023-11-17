@@ -1,6 +1,6 @@
-## Installation
+# Installation
 
-# Development environment
+## Development environment
 
 With docker installed, run the following command to start the postgresql db
 
@@ -14,6 +14,14 @@ Open a new terminal and install all the project dependencies
 npm install
 ```
 
+Generate the prisma client, push the schema to the db and seed the database with a test user
+
+```bash
+npx prisma generate
+npx prisma db push
+npm run seed
+```
+
 Now, run the development server:
 
 ```bash
@@ -21,3 +29,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+**Test user credentials**:
+email: test@admin.com
+password: admin
