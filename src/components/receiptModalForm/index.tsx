@@ -125,7 +125,7 @@ const ReceiptModalForm = (props: ReceiptModalForm) => {
 								</FormItem>
 							)}
 						/>
-						<DialogFooter>
+						<DialogFooter className="gap-2">
 							<Button onClick={onCancelClick}>Cancel</Button>
 							<Button type='submit'>Save</Button>
 						</DialogFooter>

@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<AuthSessionProvider>
 				<body className={inter.className}>
 					<Navbar />
-					<main className='flex min-h-screen flex-col items-center gap-2 p-2 lg:p-24'>{children}</main>
+					<main className='flex min-h-screen flex-col items-center gap-2 p-2 lg:p-24 pt-10'>{children}</main>
 					<Toaster />
 				</body>
 			</AuthSessionProvider>

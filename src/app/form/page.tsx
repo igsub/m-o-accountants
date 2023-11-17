@@ -91,8 +91,8 @@ const Page = () => {
 	}
 
 	return (
-		<div className='flex flex-col gap-4 md:flex-row justify-center w-full md:w-2/3'>
-			<div className='w-1/3'>
+		<div className='flex flex-col-reverse gap-4 md:flex-row justify-center w-full md:w-2/3'>
+			<div className='w-full md:w-1/3'>
 				<Form {...form}>
 					<form onSubmit={form.handleSubmit(onSubmit)}>
 						<div className='flex flex-col space-y-4'>
@@ -154,7 +154,7 @@ const Page = () => {
 					</form>
 				</Form>
 			</div>
-			<div className='flex flex-col gap-4 w-2/3'>
+			<div className='flex flex-col gap-4 w-full md:w-2/3'>
 				<ReceiptModalForm open={openAddReceiptModal} onOpenChange={setOpenAddReceiptModal} onCancel={handleReceiptCancel} onSubmit={handleReceiptSubmit} />
 				<ReceiptsTable receipts={receipts} caption='Created receipts.' />
 				<Button variant='secondary' onClick={() => setOpenAddReceiptModal(true)} disabled={loading}>

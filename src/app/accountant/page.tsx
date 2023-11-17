@@ -8,6 +8,8 @@ import { Prisma } from "@prisma/client"
 import { Dialog } from "@radix-ui/react-dialog"
 import React, { useEffect, useState } from "react"
 import { Check } from "lucide-react"
+import { toast } from "@/components/ui/use-toast"
+import { cn } from "@/lib/utils"
 
 type Form = Prisma.FormGetPayload<{
 	include: {
@@ -28,6 +30,7 @@ const Page = () => {
 	const [forms, setForms] = useState<Form[]>([])
 	const [showReceiptsModal, setShowReceiptsModal] = useState(false)
 	const [currentReceipts, setCurrentReceipts] = useState<Receipt[]>([])
+	const approveSucceded = () => toast({ description: "Form approved with success", className: cn("top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4 bg-green-300") })
 
 	useEffect(() => {
 		fetch("/api/form", {
@@ -61,12 +64,12 @@ const Page = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data)
 				const newForms = forms.map((form) => {
 					if (form.id === data.id) return { ...form, approved: data.approved }
 					return form
 				})
 				setForms(newForms)
+				approveSucceded()
 			})
 	}
 

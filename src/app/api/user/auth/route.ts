@@ -4,7 +4,7 @@ import { createHmac } from "crypto";
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
-  console.log('in auth request', email, password);
+  
   if (!email || !password) {
     throw new Error('Missing email or password')
   }
